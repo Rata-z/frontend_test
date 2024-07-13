@@ -1,1 +1,17 @@
-<p class="footer">footer works!</p>
+<!-- <p class="footer">footer works!</p> -->
+<div class="footer">
+  <div class="footer__box">
+    <p class="footer__box__text">
+      <span>CSS</span><span>IS</span><span>AWESOME</span>
+    </p>
+    <div class="footer__box__border"></div>
+  </div>
+  <p class="footer__company">nabthat</p>
+  <button class="footer__button" mat-button [matMenuTriggerFor]="menu">
+    POKAŻ
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>
+</div>

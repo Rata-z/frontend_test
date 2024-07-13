@@ -15,8 +15,11 @@ app-root {
   height: 100%;
 }
 
+body {
+  margin: 0;
+  font-family: "Open Sans", Roboto, "Helvetica Neue", sans-serif;
+}
 app-root {
   display: flex;
   flex-direction: column;
-  font-family: "Open Sans", sans-serif;
 }

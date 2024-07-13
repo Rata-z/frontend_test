@@ -7,3 +7,9 @@ $breakpoints: (
     @content;
   }
 }
+
+:export {
+  @each $size, $value in $breakpoints {
+    #{unquote($size)}: $value;
+  }
+}

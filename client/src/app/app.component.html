@@ -1,28 +1,90 @@
 <app-header></app-header>
 <div class="container">
   <router-outlet />
-
+  <div
+    class="container__alert"
+    [ngClass]="{ 'container__alert--visible': alertVisible }"
+  >
+    {{ errorMessage }}
+  </div>
   <h1 class="container__header">Nagłówek H1</h1>
   <div class="container__grid">
-    <div class="container__grid__item container__grid__item--button-cell">
+    <div
+      class="container__grid__item container__grid__item--first-item container__grid__item--button-cell"
+    >
       <h2>BLOK PIERWSZY</h2>
-      pierwszy
+      <form class="container__grid__item__form">
+        <label
+          class="container__grid__item__form__label"
+          [class.container__grid__item__form__label--bold]="
+            selectedOption === 'first'
+          "
+        >
+          <input
+            [(ngModel)]="selectedOption"
+            type="radio"
+            name="option"
+            value="first"
+          />
+
+          <span class="container__grid__item__form__label__checkmark"></span>
+          Opcja pierwsza
+        </label>
+        <label
+          class="container__grid__item__form__label"
+          [class.container__grid__item__form__label--bold]="
+            selectedOption === 'second'
+          "
+        >
+          <input
+            [(ngModel)]="selectedOption"
+            type="radio"
+            name="option"
+            value="second"
+          />
+          <span class="container__grid__item__form__label__checkmark"></span>
+          Opcja druga
+        </label>
+        <label
+          class="container__grid__item__form__label"
+          [class.container__grid__item__form__label--bold]="
+            selectedOption === 'random'
+          "
+        >
+          <input
+            [(ngModel)]="selectedOption"
+            type="radio"
+            name="option"
+            value="random"
+          />
+          <span class="container__grid__item__form__label__checkmark"></span>
+          Opcja losowa
+        </label>
+      </form>
     </div>
-    <div class="container__grid__item container__grid__item--button-cell">
-      <h2>BLOK DRUGI</h2>
-      drugi
+    <div
+      class="container__grid__item container__grid__item--second-item container__grid__item--button-cell"
+    >
+      <h2 class="container__grid__item__second-label">BLOK DRUGI</h2>
+      <div class="container__grid__item__action-buttons">
+        <button
+          (click)="replaceObject(selectedOption)"
+          class="container__grid__item__action-buttons__button"
+        >
+          ZASTĄP
+        </button>
+        <button
+          (click)="pushObject(selectedOption)"
+          class="container__grid__item__action-buttons__button"
+        >
+          DOKLEJ
+        </button>
+      </div>
     </div>
     <div class="container__grid__item container__grid__item--text-cell">
-      <h2>BLOK Z DŁUGĄ NAZWĄ KTÓRA SAMA SIĘ PRZYTNIE ---</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem aliquam
-        ea minus error nulla veniam enim dicta earum repellendus aut optio
-        perspiciatis nobis, iusto provident impedit excepturi qui autem debitis.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem aliquam
-        ea minus error nulla veniam enim dicta earum repellendus aut optio
-        perspiciatis nobis, iusto provident impedit excepturi qui autem debitis.
-      </p>
+      <h2>BLOK Z DŁUGĄ NAZWĄ KTÓRA SAMA SIĘ PRZYTNIE ...</h2>
+      <app-parser></app-parser>
     </div>
   </div>
 </div>
-<app-footer></app-footer>
+<app-footer [resetFunction]="resetForm.bind(this)"></app-footer>

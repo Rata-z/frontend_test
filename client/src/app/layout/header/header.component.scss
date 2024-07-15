@@ -5,18 +5,16 @@
   box-sizing: border-box;
   background-color: $header-background;
   color: $foreground;
-  height: 5.25rem;
-  width: 100%;
-  flex-direction: row;
-  display: flex;
+  @include size(100%, 5.25rem);
+  @include flex-row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1rem;
+  padding: 0 $header-padding-horizontal;
 
   @include lg {
     height: 7rem;
 
-    padding: 0 3rem;
+    padding: 0 $padding-horizontal-lg;
   }
 
   &__logo {
@@ -27,7 +25,7 @@
     justify-content: center;
     padding: 0.97rem 0.94rem 0.91rem;
     @include lg {
-      padding: 1.15rem 1rem 0.85rem;
+      padding: 0.75rem 0.6rem 0.45rem;
     }
 
     &:hover {
@@ -36,8 +34,7 @@
   }
 
   &__text {
-    display: flex;
-    flex-direction: column;
+    @include flex-col;
     &__item {
       font-size: 1.05rem;
       &--bold {

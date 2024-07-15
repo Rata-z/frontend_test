@@ -1,19 +1,56 @@
 @import "../styles/breakpoints";
 @import "../styles/variables";
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
 .container {
   color: $foreground;
-  height: auto;
-  width: 100%;
+  @include size(100%, auto);
   flex-grow: 1;
   box-sizing: border-box;
   padding: 0 $padding-horizontal;
+
   align-items: center;
-  display: flex;
-  flex-direction: column;
+  @include flex-col;
   background-color: $body-background;
   @include lg {
     padding: 0 $padding-horizontal-lg;
+  }
+  &__alert {
+    position: absolute;
+    top: 1rem;
+    @include size(20rem, 4rem);
+    border: 1px solid $accent;
+    border-radius: 4px;
+    color: $foreground;
+    background-color: $logo-background;
+    display: flex;
+    justify-content: center;
+    opacity: 0;
+    align-items: center;
+    &--visible {
+      animation: fadeIn 0.3s forwards, fadeOut 0.3s forwards 2.5s;
+    }
   }
   &__header {
     position: relative;
@@ -29,9 +66,7 @@
       content: "";
       @include absolute-center;
       bottom: 0;
-      height: 1px;
-
-      width: 8.06rem; /* or 100px */
+      @include size(8.06rem, 1px);
       border-bottom: 1px solid;
     }
   }
@@ -42,33 +77,48 @@
 
   &__grid {
     display: grid;
+    padding-top: 1.72rem;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
     grid-template-areas:
       "button button"
-      "text ";
+      "text";
     @include size-full;
 
     @include lg {
+      padding-top: 4.03rem;
       grid-template-areas: "button button text";
       grid-template-columns: repeat(3, minmax(0, 1fr));
       grid-template-rows: 1fr;
     }
     &__item {
+      &--first-item {
+        h2 {
+          padding-bottom: 0.4rem;
+        }
+        align-items: flex-start;
+        @include lg {
+          @include lg-cell;
+        }
+      }
+      &--second-item {
+        h2 {
+          padding-bottom: 1.17rem;
+        }
+        align-items: flex-end;
+        @include lg {
+          @include lg-cell;
+        }
+      }
+
       &--button-cell {
         grid-area: "button";
+        @include flex-col;
       }
       &--text-cell {
+        padding-top: 1.67rem;
         grid-area: "text";
-        box-sizing: border-box;
-        padding: 0 2rem;
 
-        p {
-          text-align: center;
-          font-weight: 300;
-          font-size: 0.88rem;
-          color: $body-text;
-        }
         h2 {
           overflow: hidden;
           white-space: nowrap;
@@ -78,12 +128,94 @@
         grid-column: 1 / 3;
         @include lg {
           padding: 0 1.63rem;
-          p {
-            font-weight: 500;
+          h2 {
+            padding-bottom: 3.125rem;
           }
           grid-column: 3 / 4;
         }
       }
+      &__form {
+        @include flex-col;
+        gap: 0.9rem;
+        color: $foreground;
+
+        @include lg {
+          align-self: flex-start;
+          gap: 1.45rem;
+        }
+
+        font-size: 1.25rem;
+        font-weight: 300;
+        &__label {
+          display: inline-flex;
+          width: fit-content;
+          align-items: center;
+          cursor: pointer;
+
+          &--bold {
+            font-weight: 500;
+          }
+          &__checkmark {
+            border: 3px solid $foreground;
+            border-radius: 50%;
+            margin-right: 0.7rem;
+            padding: 0.235rem;
+            @include size(1.5rem, 1.5rem);
+            @include lg {
+              @include size(2.2rem, 2.2rem);
+              border-width: 5px;
+              padding: 0.335rem;
+            }
+            box-sizing: border-box;
+
+            &::after {
+              content: "";
+              @include size-full;
+              display: block;
+              background: $foreground;
+              border-radius: 50%;
+              transform: translateX(-50%);
+              transform: scale(0);
+            }
+          }
+        }
+      }
+
+      &__action-buttons {
+        @include flex-col;
+        @include size-full;
+        gap: 0.88rem;
+        align-items: flex-end;
+        @include lg {
+          @include flex-row;
+          align-items: flex-start;
+
+          justify-content: center;
+          gap: 2.1rem;
+        }
+        &__button {
+          background-color: transparent;
+          border: 1px solid $foreground;
+          border-radius: 2px;
+          color: $accent;
+          font-weight: bold;
+
+          @include size(10.125rem, 2.5rem);
+          &:hover {
+            @include focused-gradient;
+            color: $foreground;
+          }
+        }
+      }
+    }
+
+    input[type="radio"] {
+      display: none;
+    }
+
+    input[type="radio"]:checked
+      + .container__grid__item__form__label__checkmark::after {
+      transform: scale(1);
     }
   }
 }

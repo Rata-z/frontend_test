@@ -1,0 +1,7 @@
+<div class="parser">
+  <ul class="parser__list" *ngIf="visibleData.length !== 0">
+    <li class="parser_list__item" *ngFor="let object of visibleData">
+      {{ object.body }}
+    </li>
+  </ul>
+</div>

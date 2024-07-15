@@ -1,0 +1,22 @@
+@import "../../../styles/breakpoints";
+@import "../../../styles/variables";
+
+.parser {
+  box-sizing: border-box;
+  @include flex-col;
+  @include size-full;
+  padding-bottom: 4rem;
+  word-wrap: break-word;
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-weight: 300;
+    font-size: 0.88rem;
+    color: $body-text;
+    @include lg {
+      font-weight: 500;
+    }
+  }
+}

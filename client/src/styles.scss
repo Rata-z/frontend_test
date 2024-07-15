@@ -1,5 +1,6 @@
 @import "https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700";
 @import "./styles/breakpoints";
+
 html,
 body,
 p,
@@ -12,6 +13,7 @@ html,
 body,
 app-root {
   height: 100%;
+  overflow: hidden auto;
 }
 h1 {
   font-size: 1.72rem;

@@ -1,22 +1,31 @@
 <div class="footer">
-  <div class="footer__box">
-    <p class="footer__box__text">
-      <span>CSS</span><span>IS</span><span>AWESOME</span>
-    </p>
-    <div class="footer__box__border"></div>
-  </div>
-  <p class="footer__company">nabthat</p>
-  <button (click)="toggleMenu()" class="footer__button">POKAŻ</button>
-
   <div
     class="footer__menu"
     [ngClass]="{ 'footer__menu--visible': menuVisible }"
   >
     <button (click)="resetData()" class="footer__menu__item">
-      > ZRESETUJ USTAWIENIA
+      <ng-icon name="ionChevronForward" [size]="iconHorizontalSize" />
+      ZRESETUJ USTAWIENIA
     </button>
     <button (click)="changeNameVisibility(true)" class="footer__menu__item">
-      > POKAŻ DANE OSOBOWE
+      <ng-icon name="ionChevronForward" [size]="iconHorizontalSize" />
+      POKAŻ DANE OSOBOWE
+    </button>
+  </div>
+  <div class="footer__bar">
+    <div class="footer__bar__box">
+      <p class="footer__bar__box__text">
+        <span>CSS</span><span>IS</span><span>AWESOME</span>
+      </p>
+      <div class="footer__bar__box__border"></div>
+    </div>
+    <p class="footer__bar__company">nabthat</p>
+    <button (click)="toggleMenu()" class="footer__bar__button">
+      POKAŻ
+      <ng-icon
+        [name]="menuVisible ? 'ionChevronDown' : 'ionChevronUp'"
+        [size]="iconVerticalSize"
+      />
     </button>
   </div>
 </div>

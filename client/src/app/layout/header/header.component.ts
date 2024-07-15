@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.nameSubscription = this._menuSubject.nameVisible$.subscribe(
       (visibility) => (this.isNameVisible = visibility)
     );
-    if (window.innerWidth >= 960) this.iconSize = '3rem';
+    if (window.innerWidth >= 960) this.iconSize = '3.975rem';
   }
   ngOnDestroy(): void {
     this.nameSubscription.unsubscribe();
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
     window.innerWidth >= 960
-      ? (this.iconSize = '3rem')
+      ? (this.iconSize = '3.975rem')
       : (this.iconSize = '2.1rem');
   }
 }

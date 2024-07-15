@@ -1,6 +1,28 @@
 <app-header></app-header>
-<div class="wrapper">
+<div class="container">
   <router-outlet />
-  <h1>Nagłówek H1</h1>
+
+  <h1 class="container__header">Nagłówek H1</h1>
+  <div class="container__grid">
+    <div class="container__grid__item container__grid__item--button-cell">
+      <h2>BLOK PIERWSZY</h2>
+      pierwszy
+    </div>
+    <div class="container__grid__item container__grid__item--button-cell">
+      <h2>BLOK DRUGI</h2>
+      drugi
+    </div>
+    <div class="container__grid__item container__grid__item--text-cell">
+      <h2>BLOK Z DŁUGĄ NAZWĄ KTÓRA SAMA SIĘ PRZYTNIE ---</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem aliquam
+        ea minus error nulla veniam enim dicta earum repellendus aut optio
+        perspiciatis nobis, iusto provident impedit excepturi qui autem debitis.
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem aliquam
+        ea minus error nulla veniam enim dicta earum repellendus aut optio
+        perspiciatis nobis, iusto provident impedit excepturi qui autem debitis.
+      </p>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

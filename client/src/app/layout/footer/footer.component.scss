@@ -1,30 +1,36 @@
 @import "../../../styles/breakpoints";
+$padding-horizontal: 1rem;
+$padding-horizontal-lg: 3rem;
+$primary: rgb(43, 45, 50);
+$accent: rgb(164, 167, 182);
+$footer-height: 6.5rem;
+$footer-height-lg: 7rem;
+$background: rgb(21, 22, 26);
 
 .footer {
-  background-color: rgb(21, 22, 26);
+  background-color: $background;
+  border-top: 2px solid rgb(10, 11, 14);
   position: relative;
-  height: 6.5rem;
-  padding-left: 1rem;
+  height: $footer-height;
+  padding: 0 $padding-horizontal;
   overflow: hidden;
-  padding-right: 1rem;
+  color: $primary;
 
-  color: rgb(43, 45, 50);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 
   @include lg {
-    height: 7rem;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    height: $footer-height-lg;
+    padding: 0 $padding-horizontal-lg;
   }
 
   &__box {
     width: 4.75rem;
     height: 4.75rem;
     position: relative;
-    --border-color: rgb(43, 45, 52);
+    --border-color: rgb(43, 45, 50);
     line-height: 60%;
     font-size: 1.07rem;
 
@@ -36,16 +42,17 @@
     }
     &:hover {
       cursor: pointer;
-      color: rgb(164, 167, 182);
+      color: $accent;
       --border-color: rgb(205, 116, 0);
       --border-rotate: 90deg;
     }
 
     &__border {
       content: "";
-      rotate: var(--border-rotate);
       position: absolute;
       top: 0;
+      rotate: var(--border-rotate);
+
       left: 0;
       width: 100%;
       height: 100%;
@@ -85,12 +92,61 @@
   }
 
   &__button {
-    color: rgb(162, 168, 182);
+    color: $accent;
     width: 13.52rem;
+    font-size: 0.93rem;
     font-weight: bold;
     height: 2.5rem;
     background-color: transparent;
-    border: 1px solid rgb(43, 45, 50);
-    border-radius: 0.2rem;
+    border: 1px solid $primary;
+    border-radius: 2px;
+    &:hover {
+      cursor: pointer;
+      border-color: $accent;
+    }
+  }
+  &__menu {
+    height: 4.5rem;
+    visibility: hidden;
+    position: fixed;
+    box-sizing: border-box;
+    width: 13.52rem;
+    box-shadow: 0 0 14px 6px rgba(0, 0, 0, 0.5);
+    right: 0;
+
+    bottom: 0;
+    margin-right: $padding-horizontal;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 1.1rem;
+    @include lg {
+      margin-right: $padding-horizontal-lg;
+    }
+    background-color: #ffff;
+    border: 1px solid $primary;
+    border-radius: 2px;
+    transition: transform 0.5s ease-in-out, visibility 0.5s;
+    gap: 0.2rem;
+    &--visible {
+      visibility: visible;
+      transform: translateY(-$footer-height);
+      @include lg {
+        transform: translateY(-$footer-height-lg);
+      }
+    }
+
+    &__item {
+      color: $background;
+      border: 0;
+      font-family: "Open Sans";
+      font-weight: 500;
+      background-color: transparent;
+      &:hover {
+        cursor: pointer;
+        color: rgb(205, 116, 0);
+      }
+    }
   }
 }

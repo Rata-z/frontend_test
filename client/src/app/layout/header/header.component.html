@@ -2,8 +2,15 @@
   <a class="header__logo" href="/">
     <ng-icon name="ionLogoHtml5" [size]="iconSize" />
   </a>
-
-  <p class="header__text">
-    Zadanie <span class="header__text--bold">rekrutacyjne</span>
-  </p>
+  <div class="header__text">
+    <p class="header__text__item">
+      Zadanie <span class="header__text__item--bold">rekrutacyjne</span>
+    </p>
+    <p
+      *ngIf="isNameVisible"
+      class="header__text__item header__text__item--thin"
+    >
+      Maciej Pawluczuk
+    </p>
+  </div>
 </div>

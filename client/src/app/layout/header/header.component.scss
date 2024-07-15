@@ -36,12 +36,25 @@
   }
 
   &__text {
-    font-size: 1.05rem;
-    &--bold {
-      font-weight: bold;
-    }
-    @include lg {
-      font-size: 1.9rem;
+    display: flex;
+    flex-direction: column;
+    &__item {
+      font-size: 1.05rem;
+      &--bold {
+        font-weight: bold;
+      }
+      @include lg {
+        font-size: 1.9rem;
+      }
+      &--thin {
+        text-align: right;
+        font-weight: 300;
+        font-size: 1.04rem;
+
+        @include lg {
+          font-size: 1.8rem;
+        }
+      }
     }
   }
 }

@@ -1,18 +1,28 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { MenuSubjectsService } from '../../menu-subjects.service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule],
+  imports: [CommonModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
-  // @ViewChild(MatMenuTrigger)
-  // trigger!: MatMenuTrigger;
-  // someMethod() {
-  //   this.trigger.openMenu();
-  // }
+  menuVisible: boolean;
+  constructor(private _menuSubject: MenuSubjectsService) {
+    this.menuVisible = false;
+  }
+  toggleMenu() {
+    this.menuVisible = !this.menuVisible;
+  }
+  changeNameVisibility(nameVisible: boolean) {
+    this._menuSubject.changeNameVisibility(nameVisible);
+    this.toggleMenu();
+  }
+  resetData() {
+    this._menuSubject.changeNameVisibility(false);
+    this.toggleMenu();
+  }
 }

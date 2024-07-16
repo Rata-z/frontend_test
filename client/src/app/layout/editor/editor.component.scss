@@ -3,42 +3,69 @@
 
 .editor {
   @include absolute-center;
-  top: 16vh;
-  @include size(35rem, 40rem);
+  overflow: hidden;
+  top: 8vh;
+  @include size(28rem, 30rem);
   box-sizing: border-box;
-  z-index: 10;
+  z-index: 20;
   border: 1px solid $accent;
   color: $foreground;
   border-radius: 4px;
   padding: 2 2rem;
   margin-top: 0;
-  @include flex-row;
+  @include flex-col;
+
+  @include lg {
+    @include flex-row;
+    top: 16vh;
+    @include flex-row;
+    @include size(35rem, 40rem);
+  }
   background-color: $footer-background;
 
   @include lg {
+    top: 12vh;
     @include size(60rem, 38rem);
   }
 
   &__container {
-    @include flex-col;
-    @include size-full;
-    align-items: center;
-    padding: 2rem 1rem 1rem;
+    overflow-y: hidden;
+    @include size(100%, 20rem);
+    @include flex-row;
+    @include lg {
+      @include flex-col;
+      @include size-full;
+
+      align-items: center;
+      padding: 2rem 1rem 1rem;
+    }
 
     &__add-button {
-      justify-self: center;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
       @include gradient-button;
-      @include size(10.125rem, 2.5rem);
+      @include size(3.5rem, 2.5rem);
+      @include lg {
+        position: static;
+        width: 100%;
+        justify-self: center;
+        @include size(10.125rem, 2.5rem);
+      }
     }
 
     &__list {
-      padding-top: 1rem;
       overflow-y: auto;
       list-style-type: none;
       padding-inline-start: 0;
-      @include size(100%, 30rem);
+      @include size(100%, 21rem);
       @include flex-col;
       gap: 1.6rem;
+      @include lg {
+        position: static;
+        padding-top: 1rem;
+        @include size(100%, 30rem);
+      }
 
       &__item {
         display: flex;
@@ -47,7 +74,11 @@
 
         &__selector {
           @include highlight-button;
-          @include size(14.8rem, 2.5rem);
+          @include size(10.8rem, 2.5rem);
+
+          @include lg {
+            @include size(14.8rem, 2.5rem);
+          }
         }
       }
     }
@@ -57,37 +88,83 @@
     @include flex-col;
     @include size-full;
     box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
+
+    &__id {
+      align-self: center;
+      padding-top: 1rem;
+    }
+
+    @include lg {
+      align-items: center;
+      justify-content: center;
+    }
 
     &__input {
-      @include flex-col;
+      @include flex-row;
+      align-items: flex-start;
       padding-top: 1rem;
+      @include lg {
+        @include flex-col;
+      }
 
       &__textarea {
+        position: absolute;
+        bottom: 0.2rem;
         background-color: rgba(255, 255, 255, 0.914);
         border-radius: 7px;
+        @include size(95%, 8rem);
+        left: 2%;
+        @include lg {
+          @include size-full;
+          position: static;
+        }
       }
 
       &__header {
         display: flex;
-        justify-content: space-between;
+        justify-items: center;
+        @include lg {
+          justify-content: space-between;
+        }
 
         &__delete-button {
           @include highlight-button;
           @include size(5rem, 2.5rem);
+          position: absolute;
+          left: 1rem;
+          bottom: 9rem;
+          @include lg {
+            position: absolute;
+            @include size(5rem, 2.5rem);
+            left: auto;
+            right: 1rem;
+            bottom: 1rem;
+          }
           border-radius: 7px;
         }
 
         &__label {
-          align-self: flex-end;
+          visibility: hidden;
+          @include lg {
+            visibility: visible;
+            align-self: flex-end;
+          }
         }
       }
 
       &__footer {
-        @include flex-row;
-        justify-content: space-around;
+        position: absolute;
+        justify-content: center;
+        align-self: flex-start;
+        right: 0;
+        bottom: 9rem;
+        @include lg {
+          position: static;
+          @include flex-row;
+          justify-content: space-around;
+        }
 
+        gap: 1rem;
         &__button {
           @include gradient-button;
           @include size(5rem, 2.5rem);
@@ -103,8 +180,8 @@
       font-size: 1rem;
       font-weight: bold;
       position: absolute;
-      right: 0.5rem;
-      top: 0.5rem;
+      right: 1rem;
+      top: 1rem;
       background-color: transparent;
 
       &:hover {

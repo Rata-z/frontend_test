@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isNameVisible: boolean;
 
   constructor(private _menuSubject: MenuSubjectsService) {
-    this.iconSize = '2.1rem';
+    this.iconSize = '2.7rem';
     this.isNameVisible = false;
   }
 
@@ -39,6 +39,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onWindowResize() {
     window.innerWidth >= 960
       ? (this.iconSize = '3.975rem')
-      : (this.iconSize = '2.1rem');
+      : (this.iconSize = '2.7rem');
   }
 }

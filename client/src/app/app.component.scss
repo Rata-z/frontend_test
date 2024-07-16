@@ -39,6 +39,7 @@
   &__alert {
     position: absolute;
     top: 1rem;
+    z-index: 30;
     @include size(20rem, 4rem);
     border: 1px solid $accent;
     border-radius: 4px;

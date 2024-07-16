@@ -27,11 +27,11 @@ export class EditorComponent implements OnInit {
     this.newValue = '';
 
     this.focusedId = null;
-    this.cols = '28';
+    this.cols = '18';
   }
   @HostListener('window:resize', ['$event'])
   onWindowResize() {
-    window.innerWidth >= 960 ? (this.cols = '45') : (this.cols = '28');
+    window.innerWidth >= 960 ? (this.cols = '45') : (this.cols = '18');
   }
 
   saveCurrentStatus() {

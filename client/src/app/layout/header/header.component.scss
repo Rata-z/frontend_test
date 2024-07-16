@@ -2,17 +2,21 @@
 @import "../../../styles/variables";
 
 .header {
+  position: fixed;
+  top: 0;
   box-sizing: border-box;
   background-color: $header-background;
   color: $foreground;
-  @include size(100%, 5.25rem);
+  @include size(100%, $header-height);
   @include flex-row;
   justify-content: space-between;
   align-items: center;
   padding: 0 $header-padding-horizontal;
+  z-index: 999;
+  overflow-y: auto;
 
   @include lg {
-    height: 7rem;
+    height: $header-height-lg;
 
     padding: 0 $padding-horizontal-lg;
   }

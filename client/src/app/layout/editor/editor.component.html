@@ -1,0 +1,72 @@
+<div class="editor">
+  <div class="editor__container">
+    <button
+      (click)="addContent(newValue)"
+      class="editor__container__add-button"
+    >
+      Dodaj
+    </button>
+    <ul class="editor__container__list" *ngIf="json.length !== 0">
+      <li
+        class="editor__container__list__item"
+        *ngFor="let object of json.reverse()"
+      >
+        <button
+          class="editor__container__list__item__selector"
+          (click)="selectObject(object.body, object.id)"
+        >
+          {{ object.id }}
+        </button>
+      </li>
+    </ul>
+  </div>
+
+  <div class="editor__body">
+    <button (click)="closeEditor()" class="editor__body__close-button">
+      x
+    </button>
+    <p class="editor__body__id" *ngIf="focusedId">
+      Edytowana treść objektu nr: {{ focusedId }}
+    </p>
+    <div class="editor__body__input">
+      <div class="editor__body__input__header">
+        <label
+          class="editor__body__input__header__label"
+          for="name"
+          for="content"
+          >Wpisz treść:</label
+        >
+        <button
+          class="editor__body__input__header__delete-button"
+          *ngIf="focusedId"
+          (click)="deleteContent(focusedId)"
+        >
+          Usuń
+        </button>
+      </div>
+
+      <textarea
+        class="editor__body__input__textarea"
+        id="content"
+        name="content"
+        rows="25"
+        [cols]="cols"
+        [(ngModel)]="newValue"
+      ></textarea>
+      <div class="editor__body__input__footer" *ngIf="focusedId">
+        <button
+          class="editor__body__input__footer__button"
+          (click)="acceptEdit(newValue, focusedId)"
+        >
+          Zapisz
+        </button>
+        <button
+          class="editor__body__input__footer__button"
+          (click)="cancelEdit()"
+        >
+          Anuluj
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

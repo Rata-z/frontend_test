@@ -1,3 +1,6 @@
+<div *ngIf="isEditorOpen">
+  <app-editor (close)="handleEditorClose()"></app-editor>
+</div>
 <app-header></app-header>
 <div class="container">
   <router-outlet />
@@ -82,9 +85,12 @@
       </div>
     </div>
     <div class="container__grid__item container__grid__item--text-cell">
-      <h2>BLOK Z DŁUGĄ NAZWĄ KTÓRA SAMA SIĘ PRZYTNIE ...</h2>
+      <h2>BLOK Z DŁUGĄ NAZWĄ KTÓRA SAMA SIĘ PRZYTNIE</h2>
       <app-parser></app-parser>
     </div>
   </div>
 </div>
-<app-footer [resetFunction]="resetForm.bind(this)"></app-footer>
+<app-footer
+  (openEditor)="handleOpenEditor()"
+  [resetFunction]="resetForm.bind(this)"
+></app-footer>

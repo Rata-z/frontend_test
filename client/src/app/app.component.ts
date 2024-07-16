@@ -7,6 +7,7 @@ import { ParserComponent } from './layout/parser/parser.component';
 import { DataService } from './data.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { CommonModule } from '@angular/common';
+import { EditorComponent } from './layout/editor/editor.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     CommonModule,
     ParserComponent,
+    EditorComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -28,12 +30,14 @@ export class AppComponent {
   errorMessage: string | null;
   jsonSubscription!: Subscription;
   alertVisible: boolean;
+  isEditorOpen: boolean;
 
   constructor(private _dataObject: DataService) {
     this.selectedOption = '';
     this.errorMessage = null;
     this.errorMessageListener = null;
     this.alertVisible = false;
+    this.isEditorOpen = false;
   }
   resetForm() {
     this.selectedOption = '';
@@ -48,20 +52,26 @@ export class AppComponent {
   replaceObject(id: string) {
     this._dataObject.replaceObject(id);
     this.resetForm();
-    this.triggerAllert();
+    this.triggerAlert();
   }
   pushObject(id: string) {
     this._dataObject.addDataObject(id);
     this.resetForm();
-    this.triggerAllert();
+    this.triggerAlert();
   }
-  triggerAllert() {
+  triggerAlert() {
     if (!this.alertVisible && this.errorMessageListener) {
       this.errorMessage = this.errorMessageListener;
       this.alertVisible = true;
       setTimeout(() => {
         this.alertVisible = false;
-      }, 3600);
+      }, 3500);
     }
+  }
+  handleOpenEditor() {
+    this.isEditorOpen = true;
+  }
+  handleEditorClose() {
+    this.isEditorOpen = false;
   }
 }

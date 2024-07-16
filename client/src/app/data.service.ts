@@ -1,13 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
+
+export interface DataType {
+  id: number;
+  body: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private _jsonObject: any[];
+  private _jsonObject: DataType[];
 
-  private _currentDataObject = new BehaviorSubject<any[]>([]);
+  private _currentDataObject = new BehaviorSubject<DataType[]>([]);
   private _errorProperty = new BehaviorSubject<string | null>(null);
   currentData$ = this._currentDataObject.asObservable();
   errorMessage$ = this._errorProperty.asObservable();
@@ -17,7 +23,7 @@ export class DataService {
   }
 
   //Sets available object or throws error message
-  getObject(id: string): undefined | any {
+  getObject(id: string): undefined | DataType {
     let objectId: number;
     switch (id) {
       case 'first':
@@ -87,9 +93,15 @@ export class DataService {
     }
   }
   fetchData() {
-    this.http.get<any[]>('../assets/data.json').subscribe((res) => {
-      this._jsonObject = res;
-    });
+    const storedData = localStorage.getItem('jsonObject');
+    if (storedData) {
+      this._jsonObject = JSON.parse(storedData);
+    } else {
+      this.http.get<DataType[]>('../assets/data.json').subscribe((res) => {
+        localStorage.setItem('jsonObject', JSON.stringify(res));
+        this._jsonObject = res;
+      });
+    }
   }
   resetService() {
     this._jsonObject = [];

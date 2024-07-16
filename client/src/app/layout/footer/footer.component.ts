@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuSubjectsService } from '../../menu-subjects.service';
 
 import { NgIconComponent, provideIcons } from '@ng-icons/core';
@@ -39,7 +39,12 @@ export class FooterComponent {
   }
 
   @Input() resetFunction!: () => void;
+  @Output() openEditor = new EventEmitter<void>();
 
+  triggerOpenEditor() {
+    this.openEditor.emit();
+    this.toggleMenu();
+  }
   triggerReset() {
     if (this.resetFunction) {
       this.resetFunction();

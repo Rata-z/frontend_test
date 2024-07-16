@@ -1,0 +1,117 @@
+@import "../../../styles/breakpoints";
+@import "../../../styles/variables";
+
+.editor {
+  @include absolute-center;
+  top: 16vh;
+  @include size(35rem, 40rem);
+  box-sizing: border-box;
+  z-index: 10;
+  border: 1px solid $accent;
+  color: $foreground;
+  border-radius: 4px;
+  padding: 2 2rem;
+  margin-top: 0;
+  @include flex-row;
+  background-color: $footer-background;
+
+  @include lg {
+    @include size(60rem, 38rem);
+  }
+
+  &__container {
+    @include flex-col;
+    @include size-full;
+    align-items: center;
+    padding: 2rem 1rem 1rem;
+
+    &__add-button {
+      justify-self: center;
+      @include gradient-button;
+      @include size(10.125rem, 2.5rem);
+    }
+
+    &__list {
+      padding-top: 1rem;
+      overflow-y: auto;
+      list-style-type: none;
+      padding-inline-start: 0;
+      @include size(100%, 30rem);
+      @include flex-col;
+      gap: 1.6rem;
+
+      &__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &__selector {
+          @include highlight-button;
+          @include size(14.8rem, 2.5rem);
+        }
+      }
+    }
+  }
+
+  &__body {
+    @include flex-col;
+    @include size-full;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+
+    &__input {
+      @include flex-col;
+      padding-top: 1rem;
+
+      &__textarea {
+        background-color: rgba(255, 255, 255, 0.914);
+        border-radius: 7px;
+      }
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+
+        &__delete-button {
+          @include highlight-button;
+          @include size(5rem, 2.5rem);
+          border-radius: 7px;
+        }
+
+        &__label {
+          align-self: flex-end;
+        }
+      }
+
+      &__footer {
+        @include flex-row;
+        justify-content: space-around;
+
+        &__button {
+          @include gradient-button;
+          @include size(5rem, 2.5rem);
+          border-radius: 7px;
+        }
+      }
+    }
+
+    &__close-button {
+      border-radius: 50%;
+      border: 3px solid $foreground;
+      color: $foreground;
+      font-size: 1rem;
+      font-weight: bold;
+      position: absolute;
+      right: 0.5rem;
+      top: 0.5rem;
+      background-color: transparent;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      @include size(2rem, 2rem);
+    }
+  }
+}

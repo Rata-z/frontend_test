@@ -28,13 +28,13 @@
   @include size(100%, auto);
   flex-grow: 1;
   box-sizing: border-box;
-  padding: 0 $padding-horizontal;
+  padding: $header-height $padding-horizontal 0;
 
   align-items: center;
   @include flex-col;
   background-color: $body-background;
   @include lg {
-    padding: 0 $padding-horizontal-lg;
+    padding: $header-height-lg $padding-horizontal-lg 0;
   }
   &__alert {
     position: absolute;
@@ -53,6 +53,7 @@
     }
   }
   &__header {
+    z-index: 0;
     position: relative;
     width: 100%;
     padding: 1.43rem 0 0.73rem 0;

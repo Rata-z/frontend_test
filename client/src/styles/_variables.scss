@@ -4,6 +4,8 @@ $header-padding-horizontal: 1.14rem;
 $footer-padding-horizontal: 1.14rem;
 $footer-height: 6.5rem;
 $footer-height-lg: 7rem;
+$header-height: 5.25rem;
+$header-height-lg: 7rem;
 $primary: rgb(43, 45, 50);
 $foreground: rgb(255, 255, 255);
 $accent: rgb(164, 167, 182);
@@ -20,6 +22,38 @@ $body-text: rgb(139, 143, 155);
   align-items: center;
   h2 {
     padding-bottom: 3.125rem;
+  }
+}
+@mixin gradient-button {
+  background-color: transparent;
+  border: 1px solid $foreground;
+  border-radius: 2px;
+  color: $accent;
+  font-weight: bold;
+
+  &:hover {
+    cursor: pointer;
+    @include focused-gradient;
+    color: $foreground;
+  }
+}
+@mixin highlight-button {
+  color: $accent;
+  box-sizing: border-box;
+  font-size: 0.93rem;
+  font-weight: bold;
+
+  align-items: center;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: center;
+  background-color: transparent;
+  border: 1px solid $primary;
+  border-radius: 2px;
+  &:hover {
+    cursor: pointer;
+    border-color: $foreground;
+    color: $foreground;
   }
 }
 

@@ -2,18 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../data.service';
 import { CommonModule } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DataType } from '../../data.service';
 
 @Component({
   selector: 'app-parser',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './parser.component.html',
   styleUrl: './parser.component.scss',
 })
 export class ParserComponent implements OnInit {
   jsonSubscription!: Subscription;
-  visibleData: any[];
+  visibleData: DataType[];
   constructor(private _dataObject: DataService) {
     this.visibleData = [];
   }

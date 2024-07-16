@@ -17,16 +17,10 @@
 
   @include lg {
     @include flex-row;
-    top: 16vh;
-    @include flex-row;
-    @include size(35rem, 40rem);
-  }
-  background-color: $footer-background;
-
-  @include lg {
     top: 12vh;
     @include size(60rem, 38rem);
   }
+  background-color: $footer-background;
 
   &__container {
     overflow-y: hidden;
@@ -48,7 +42,6 @@
       @include size(3.5rem, 2.5rem);
       @include lg {
         position: static;
-        width: 100%;
         justify-self: center;
         @include size(10.125rem, 2.5rem);
       }

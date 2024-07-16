@@ -195,17 +195,8 @@
           gap: 2.1rem;
         }
         &__button {
-          background-color: transparent;
-          border: 1px solid $foreground;
-          border-radius: 2px;
-          color: $accent;
-          font-weight: bold;
-
+          @include gradient-button;
           @include size(10.125rem, 2.5rem);
-          &:hover {
-            @include focused-gradient;
-            color: $foreground;
-          }
         }
       }
     }

@@ -89,7 +89,6 @@
         position: absolute;
         top: 0;
         rotate: var(--border-rotate);
-
         left: 0;
         @include size-full;
         border: 1px solid var(--border-color);
@@ -127,23 +126,8 @@
     }
 
     &__button {
-      color: $accent;
-      box-sizing: border-box;
-      font-size: 0.93rem;
-      font-weight: bold;
+      @include highlight-button;
       @include size(14.8rem, 2.5rem);
-      align-items: center;
-      display: flex;
-      gap: 0.8rem;
-      justify-content: center;
-      background-color: transparent;
-      border: 1px solid $primary;
-      border-radius: 2px;
-      &:hover {
-        cursor: pointer;
-        border-color: $foreground;
-        color: $foreground;
-      }
     }
   }
 }
